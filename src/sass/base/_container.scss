@@ -3,6 +3,10 @@
   margin: 0 auto;
   padding: 0 6.25%;
   height: 100vh;
+  background-image: $body-gradient-background, url('../images/bg1.jpg');
+  background-size: cover;
+  background-position: auto;
+  background-repeat: no-repeat;
 }
 
 @media screen and (min-width: 480px) {
