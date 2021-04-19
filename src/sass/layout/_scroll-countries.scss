@@ -1,0 +1,64 @@
+.favoriteBox{
+    display: flex;
+    align-items: flex-end;
+  
+  .city_list {
+      width: 100%;
+      overflow: scroll;
+      &.city_list::-webkit-scrollbar{
+        display: none;
+      }
+      padding-left: 20px;
+      margin-top: 15px;
+      display: flex;
+      .list_item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        border-radius: 20px;
+        background-color: $box-cuntry-background;
+        min-width: 72px;
+        height: 28px;
+        margin-right: 10px;
+      }
+      .list_item_name {
+        font-family: Lato;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 0.85;
+        color: $white-font-color;
+        border-bottom: 1px solid $white-font-color;
+        padding-bottom: 3px;
+        margin-left: 12px;
+      }
+      .close {
+        // position: absolute;
+        right: 12px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    
+        svg {
+          fill: $transparent-button-background;
+          width: 12px;
+          height: 12px;
+          &:hover {
+            fill: $black-font-color;
+          }
+        }
+      }
+    }
+  }
+    
+    .arrow {
+      transform: rotate(90deg);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      svg {
+        width: 24px;
+        height: 28px;
+      }
+    }

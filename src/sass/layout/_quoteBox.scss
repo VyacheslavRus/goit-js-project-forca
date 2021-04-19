@@ -1,0 +1,60 @@
+.quoteBox{
+    width: 100%;
+    padding: 30px 20px 0;
+    
+    font-size: 14px;
+    line-height: 1.2;
+    text-align: right;
+    letter-spacing: 0.04em;
+    color: black;
+    // изменить!!!
+
+    @media screen and (min-width: 768px){
+        width: 380px;
+        height: 145px;
+        font-size: 22px;
+        line-height: 1.18;
+        letter-spacing: 0.04em;
+
+        float: right;
+    }
+
+    @media screen and (min-width: 1280px){
+        width: 340px;
+    }
+}
+
+.quoteIcon{
+    margin-bottom: -10px;
+    top: 15px;
+    left: 238px;
+
+    width: 22px;
+    height: 20px;
+}
+
+.quoteIcon use{
+    justify-content: right;
+    display: block;
+    
+    background: $white-font-color;
+    opacity: 0.2;
+}
+
+.quote{
+    padding-bottom: 15px;
+
+    @media screen and (min-width: 768px){
+        padding-bottom: 20px;
+    }
+
+    @media screen and (min-width: 1280px){
+        padding-bottom: 30px;
+    }
+}
+
+.quoteAuthor{
+    font-size: 18px;
+    line-height: 1.22;
+    letter-spacing: 0.04em;
+}
