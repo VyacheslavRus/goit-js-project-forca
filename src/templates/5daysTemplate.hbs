@@ -1,0 +1,37 @@
+{{!-- {{#each this}} --}}
+<h1 class="weather5day-location">{{name}} {{country}}</h1>
+{{#each list}}
+<div class="weather5day-cont">
+
+    <div class="weather5day-cont-box">
+        <h2 class="weather5day-cont-box-day">Sunday{{dt_txt}}</h2>
+        <h3 class="weather5day-cont-box-date">09 Feb</h3>
+        <svg class="weather5day-cont-box-icon" width="35" height="35">
+            <use href="./images/symbol-defs.svg#icon-clouds"></use>
+        </svg>
+        <div class="weather5day-cont-box-cont">
+            <div class="weather5day-cont-box-cont-box1">
+                <p class="weather5day-cont-box-cont-min">min</p>
+                <p class="weather5day-cont-box-cont-minnumb">-2&deg;</p>
+            </div>
+            <div class="weather5day-cont-box-cont-box2">
+                <p class="weather5day-cont-box-cont-max">max</p>
+                <p class="weather5day-cont-box-cont-maxnumb">1&deg;</p>
+            </div>
+        </div>
+        <a class="weather5day-cont-box-moreInfo" href="">moer info</a>
+    </div>
+
+
+</div>
+{{/each}}
+{{!-- {{/each}} --}}
+{{!-- <div class="weather5day-button">
+    <svg class="weather5day-button-arrow" width="20" height="20">
+        <use href="./images/symbol-defs.svg#icon-arrow-left"></use>
+    </svg>
+    <svg class="weather5day-button-arrow" width="20" height="20">
+        <use href="./images/symbol-defs.svg#icon-arrow-right"></use>
+    </svg>
+</div>
+{{/each}} --}}
