@@ -5,3 +5,4 @@ import './js/quoteForismaticApi';
 import './js/quoteForismatic'
 import './js/scrollCountries'
 import './js/weatherMain';
+import './js/chart.js'
