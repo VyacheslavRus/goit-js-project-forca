@@ -155,13 +155,15 @@ const getWeather = async ({ city, latitude, longitude }) => {
   return weatherData;
 };
 
+export default { getWeather };
+
 // const tyest = {
 //   city: 'Kiev',
 //   latitude: 50.4333,
 //   longitude: 30.5167,
 // };
 
-// getWeather(tyest)
+// getWeather({ latitude: 50.4333, longitude: 30.5167 })
 //   .then(users => console.log(users))
 //   .catch(error => console.log(error));
 
