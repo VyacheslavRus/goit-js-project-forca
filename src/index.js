@@ -7,7 +7,7 @@ import './js/getWeather.js';
 // import './js/scrollCountries';
 // import './js/weatherMain';
 // import './js/chart.js';
-
+import './js/renderSecondPart'
 // const tyest = {
 //   city: 'Kiev',
 //   latitude: 50.4333,
