@@ -36,7 +36,7 @@ clock()
 function renderSecPart(data) {
     div.insertAdjacentHTML('beforeend', `<div class="secondPartBox">
     <h2 class="secondPartBox-date">${data.everyDay[0].day}<sup>th</sup> ${data.everyDay[0].dayOfWeek}</h2>
-    <div class='secondPartBox-ggg'>
+    <div class='secondPartBox-combi'>
     <div class="secondPartBox-dateBox">
     <p class="secondPartBox-dateBox-month">${data.everyDay[0].month}</p>
     <p class="secondPartBox-dateBox-time"></p>
