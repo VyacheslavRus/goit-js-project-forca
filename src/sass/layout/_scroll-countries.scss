@@ -51,14 +51,14 @@
     }
   }
     
-    .arrow {
-      transform: rotate(90deg);
+    .favBtn {
       width: 28px;
       height: 28px;
       border-radius: 50%;
       border: none;
+      background-color:$transparent-pointer-button;
       svg {
-        width: 24px;
+        width: 28px;
         height: 28px;
       }
     }
