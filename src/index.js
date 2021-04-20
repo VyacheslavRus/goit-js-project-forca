@@ -1,4 +1,5 @@
 import './sass/main.scss';
+import './js/weatherFiveDays.js';
 import getWeth from './js/getWeather.js';
 // import location from './js/location.js';
 // import renderCurentWether from './js/renderCurentWether.js';

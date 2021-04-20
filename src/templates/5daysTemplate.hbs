@@ -1,37 +1,36 @@
-{{!-- {{#each this}} --}}
-<h1 class="weather5day-location">{{name}} {{country}}</h1>
-{{#each list}}
-<div class="weather5day-cont">
+<h1 class="contentBox-location">Kyiv UA{{name}} {{country}}</h1>
 
-    <div class="weather5day-cont-box">
-        <h2 class="weather5day-cont-box-day">Sunday{{dt_txt}}</h2>
-        <h3 class="weather5day-cont-box-date">09 Feb</h3>
-        <svg class="weather5day-cont-box-icon" width="35" height="35">
-            <use href="./images/symbol-defs.svg#icon-clouds"></use>
+<div class="contentBox-cont">
+
+    {{#each this}}
+    <div class="contentBox-cont-box">
+        <h2 class="contentBox-cont-box-day">{{dayOfWeek}}</h2>
+        <h3 class="contentBox-cont-box-date">{{day}} {{month}}</h3>
+        <svg class="contentBox-cont-box-icon" width="35" height="35">
+            <use href="./images/symbol-defs.svg#{{dayWeatherIcon}}"></use>
         </svg>
-        <div class="weather5day-cont-box-cont">
-            <div class="weather5day-cont-box-cont-box1">
-                <p class="weather5day-cont-box-cont-min">min</p>
-                <p class="weather5day-cont-box-cont-minnumb">-2&deg;</p>
+        <div class="contentBox-cont-box-cont">
+            <div class="contentBox-cont-box-cont-box1">
+                <p class="contentBox-cont-box-cont-min">min</p>
+                <p class="contentBox-cont-box-cont-minnumb">{{dayMinTemp}}&deg;</p>
             </div>
-            <div class="weather5day-cont-box-cont-box2">
-                <p class="weather5day-cont-box-cont-max">max</p>
-                <p class="weather5day-cont-box-cont-maxnumb">1&deg;</p>
+            <div class="contentBox-cont-box-cont-box2">
+                <p class="contentBox-cont-box-cont-max">max</p>
+                <p class="contentBox-cont-box-cont-maxnumb">{{dayMaxTemp}}&deg;</p>
             </div>
         </div>
-        <a class="weather5day-cont-box-moreInfo" href="">moer info</a>
+        <a class="contentBox-cont-box-moreInfo" href="">moer info</a>
     </div>
 
+    {{/each}}
 
 </div>
-{{/each}}
-{{!-- {{/each}} --}}
-{{!-- <div class="weather5day-button">
-    <svg class="weather5day-button-arrow" width="20" height="20">
+<div class="contentBox-button">
+
+    <svg class="contentBox-button-arrow" data-action="right" width="20" height="20">
         <use href="./images/symbol-defs.svg#icon-arrow-left"></use>
     </svg>
-    <svg class="weather5day-button-arrow" width="20" height="20">
+    <svg class="contentBox-button-arrow" data-action="left" width="20" height="20">
         <use href="./images/symbol-defs.svg#icon-arrow-right"></use>
     </svg>
 </div>
-{{/each}} --}}
