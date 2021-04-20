@@ -1,0 +1,129 @@
+//______one day_________
+
+.weatherBox {
+  width: 280px;
+  margin-top: 20%;
+  background: #102136;
+  box-shadow: 0px 5px 33px rgba(84, 103, 126, 0.8);
+  border-radius: 34px;
+
+  &-icon {
+    margin-left: 50%;
+    margin-top: 30px;
+    transform: translate(-50%);
+  }
+
+  &-location {
+    padding-top: 10px;
+    margin-left: 110px;
+    font-size: 16px;
+    line-height: 1.1875em;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #767d85;
+  }
+  &-temperature {
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-bottom: 30px;
+    &-main {
+      font-weight: 300;
+      font-size: 45px;
+      line-height: 1.2em;
+      letter-spacing: 0.04em;
+
+      color: #ffffff;
+    }
+    &-box {
+      display: flex;
+    }
+    &-box1,
+    &-box2 {
+      font-size: 14px;
+      line-height: 1.21em;
+
+      color: #767d85;
+    }
+    &-box1 {
+      margin-right: 10px;
+      padding-right: 10px;
+      border-right: 1px solid #27384a;
+    }
+    &-minnumb,
+    &-maxnumb {
+      font-size: 16px;
+      line-height: 1.19em;
+      color: #ffffff;
+    }
+  }
+}
+
+//___________second part_______
+
+.contentBox {
+  width: 280px;
+  background: rgba(16, 33, 54, 0.8);
+  border-radius: 34px;
+  &-date {
+    font-weight: 300;
+    font-size: 45px;
+    line-height: 1.2em;
+    padding-top: 30px;
+    text-align: center;
+    letter-spacing: 0.04em;
+
+    color: #ffffff;
+  }
+  &-dateBox {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    &-month {
+      margin-right: 10px;
+      padding-right: 10px;
+
+      border-right: 1px solid #ffffff;
+    }
+    &-month,
+    &-time {
+      font-size: 14px;
+      line-height: 1.21em;
+      letter-spacing: 0.04em;
+
+      color: #ffffff;
+    }
+  }
+  &-sun {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+    &-sunrise {
+      margin-right: 10px;
+      padding-right: 10px;
+
+      border-right: 1px solid #ffffff;
+    }
+    &-sunrise,
+    &-sunset {
+      font-size: 14px;
+      line-height: 1.21em;
+      letter-spacing: 0.04em;
+
+      color: #ffffff;
+    }
+    &-icon,
+    &-icon {
+      margin-right: 10px;
+    }
+    & use {
+      fill: #ff6b09;
+    }
+  }
+}
