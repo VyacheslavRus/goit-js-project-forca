@@ -1,11 +1,23 @@
 // Input-serch
-.input-box{
+.input-box {
+  display: flex;
+  justify-content: center;
   padding-top: 30px;
+  
 }
 .inputForm {
   position: relative;
   width: 280px;
   height: 48px;
+  @media (min-width: 768px) {
+    width: 500px;
+  }
+  // @media (max-width: 425px) {
+  //   max-width: 350px;
+  // }
+  // @media (min-width: 426px) and (max-width: 768px) {
+  //   width: 500px;
+  // }
 }
 .search-box {
   padding-left: 57px;
@@ -14,14 +26,21 @@
   border-radius: 30px;
   outline: none;
   border: none;
+  font-size: 14px;
+  @media (min-width: 768px) {
+    width: 500px;
+    font-size: 18px;
+  }
 
   &::placeholder {
     color: $black-font-color;
     font-family: Lato;
     font-weight: 400;
     font-size: 14px;
-
     letter-spacing: 0.04em;
+  }
+  @media (min-width: 768px) {
+    font-size: 18px;
   }
 }
 
@@ -70,4 +89,3 @@
     height: 22px;
   }
 }
-
