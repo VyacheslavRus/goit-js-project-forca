@@ -7,7 +7,7 @@ const getWeather = async dataSet => {
       if (
         JSON.parse(localStorage.getItem(dataSet.city)).location ===
           dataSet.city &&
-        JSON.parse(localStorage.getItem(dataSet.city)).createTime + 300000 >
+        JSON.parse(localStorage.getItem(dataSet.city)).createTime + 600000 >
           new Date() &&
         new Date(
           JSON.parse(localStorage.getItem(dataSet.city)).createTime,
