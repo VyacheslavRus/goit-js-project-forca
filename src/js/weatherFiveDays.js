@@ -2,6 +2,7 @@
 import getWeather from './getWeather.js';
 import dayTemplate from '../templates/5daysTemplate.hbs';
 
+import Siema from './siema.js';
 
 
 const refs = {
@@ -12,44 +13,54 @@ const refs = {
 }
 
 refs.fiveDays.addEventListener('click', showWeather);
-
 const tyest = {
-  city: 'Kiev',
-  latitude: 50.4333,
-  longitude: 30.5167,
+    city: 'Kiev',
+    latitude: 50.4333,
+    longitude: 30.5167,
 };
-// let search = "";
-function showWeather(e) {
-    e.preventDefault();
-    // search = e.currentTarget.elements.input.value;
-    fetchWeather();
-
+//  let search = "";
+function showWeather() {
+  // e.preventDefault();
+  // const inputValue = e.target.value;
+  //  getWeather.getWeather(inputValue).then(data => {
+  //     render(data)});
+  // getWeather.query = e.currentTarget.elements.query.value;
+  fetchWeather();
+  
    
-
-// refs.scrollBtnR.addEventListener('click', () => refs.contentBox.scrollTo({
-//   left: 400,
-//   behavior: 'smooth',
-// }));
-
-
-// refs.scrollBtnR.addEventListener('click', () => {
-//     refs.contentBox.scrollTo(1000, 0)
-// });
 }
 
 function render(data) {
-    refs.contentBox.innerHTML = dayTemplate(data.everyDay);
-
-    // console.log(data); 
+  refs.contentBox.innerHTML = dayTemplate(data.everyDay);
+   console.log(data);
+       const mySiema = new Siema({
+    // selector: '.contentBox-cont-box',
+    // perPage: { 300: 3, 768: 5, 1280: 5, },
+    
+    onInit: onInitCallback,
+    onChange: onChangeCallback,
+  });
+    
+  document.querySelector('[data-action="right"]').addEventListener('click', () => mySiema.prev());
+  document.querySelector('[data-action="left"]').addEventListener('click', () => mySiema.next());
 }
 function fetchWeather() {
     
     return getWeather.getWeather(tyest).then(data => {
-        render(data);
+      render(data);
     });
-    
+  
+    }
+
+
+
+function onInitCallback() {
+  console.log('Siema initialised bro :)');
 }
 
+function onChangeCallback() {
+  console.log(`The index of current slide is: ${this.currentSlide}`);
+}
 
-
-
+  
+  
