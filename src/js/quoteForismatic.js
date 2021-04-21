@@ -1,7 +1,7 @@
 import api from './quoteForismaticApi.js'
 function renderQuote() {
     api.fetchQuote().then(quote => {
-    const renderQuote = document.querySelector('.additionalInfo')
+    const renderQuote = document.querySelector('.contentBox')
     let markup = renderQuote.insertAdjacentHTML('beforeend', 
     `<div class='quoteBox'> 
         <svg class='quoteIcon'>
