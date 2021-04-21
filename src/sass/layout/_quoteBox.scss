@@ -1,13 +1,12 @@
 .quoteBox{
-    width: 100%;
+    width: 280px;
     padding: 30px 20px 0;
     
     font-size: 14px;
     line-height: 1.2;
     text-align: right;
     letter-spacing: 0.04em;
-    color: black;
-    // изменить!!!
+    color: $white-font-color;
 
     @media screen and (min-width: 768px){
         width: 380px;
@@ -25,7 +24,7 @@
 }
 
 .quoteIcon{
-    margin-bottom: -10px;
+    margin-bottom: -13px;
     top: 15px;
     left: 238px;
 

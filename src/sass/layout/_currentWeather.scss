@@ -6,33 +6,27 @@
 .firstPart {
   margin-top: 45px;
   min-width: 280px;
+  height: 190px;
   background: #102136;
-  box-shadow: 0px 5px 33px rgba(84, 103, 126, 0.8);
+  box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
   border-radius: 34px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media (max-width: 425px) {
-    max-width: 350px;
-    height: 190px;
-  }
-  @media (min-width: 426px) and (max-width: 768px) {
-    margin-top: 106px;
+  @media screen and (min-width: 768px){
     width: 500px;
     height: 300px;
+    margin-top: 110px;
   }
-  @media (min-width: 769px) {
-    margin-top: 106px;
-    width: 500px;
-    height: 300px;
+  @media screen and (min-width: 1280px){
+    width: 450px;
+    margin-top: 92px;
   }
   &-icon {
     width: 35px;
     height: 35px;
   }
-  
-
   &-location {
     margin-top: 20px;
     font-size: 16px;
@@ -41,9 +35,8 @@
     align-items: center;
     text-align: center;
     color: #767d85;
-    @media (min-width: 768px) {
+    @media screen and (min-width: 768px) {
         font-size: 18px;
-        
       }
   }
   &-temperature {
@@ -53,59 +46,77 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    @media (min-width: 768px) {
+    @media screen and (min-width: 768px) {
       justify-content: center;
       align-items: center;
       flex-direction: column;
     }
+    &-max,
+    &-min{
+      margin-bottom: 3px;
+      @media screen and (min-width: 768px) {
+        margin-bottom: 10px;
+      }
+    }
+
+  
     &-main {
       font-weight: 300;
       font-size: 45px;
       line-height: 1.2em;
       letter-spacing: 0.04em;
       color: #ffffff;
-      @media (min-width: 768px) {
+      @media screen and (min-width: 768px){
         font-size: 90px;
-        
-      }
     }
+  }
     &-box {
       display: flex;
+      text-align: center;
     }
     &-box1,
     &-box2 {
       font-size: 14px;
       line-height: 1.21;
       color: #767d85;
-      @media (min-width: 768px) {
+      @media screen and (min-width: 768px) {
         font-size: 18px;
-        
       }
     }
     &-box1 {
       margin-right: 10px;
       padding-right: 10px;
       border-right: 1px solid #27384a;
+      @media screen and (min-width: 768px){
+        margin-right: 20px;
+        padding-right: 20px;
+    }
     }
     &-minnumb,
     &-maxnumb {
+     
       font-size: 16px;
       line-height: 1.19;
       color: #ffffff;
-      @media (min-width: 768px) {
+      @media screen and (min-width: 768px) {
         font-size: 18px;
-        
       }
     }
   }
 }
 
+
 //___________second part_______
 
 .secondPartBox {
-  width: 100%;
+  width: 280px;
   background: $box-content-background;
   border-radius: 34px;
+  box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   @media screen and (min-width: 768px){
     width: 500px;
   }
@@ -135,13 +146,21 @@
     }
   }
   &-dateBox {
+    width: 151px;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+
+    @media screen and (min-width: 768px){
+      width: 193px;
+    }
+    
     padding-top: 10px;
     &-month {
       margin-right: 10px;
-      padding-right: 10px;
-
+      width: 97px;
+      
       border-right: 1px solid #ffffff;
     }
     &-month,
@@ -157,20 +176,27 @@
     }
   }
   &-sun {
+    width: 158px;
     padding-top: 20px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    margin: 0 auto;
+    justify-content: space-between;
     align-items: center;
     padding-bottom: 40px;
+    @media screen and (min-width: 768px){
+      width: 200px;
+    }
     &-sunrise {
       margin-right: 10px;
-      padding-right: 10px;
+      padding-right: 16px;
 
       border-right: 1px solid #ffffff;
     }
     &-sunrise,
     &-sunset {
+      display: flex;
+      align-items: center;
+
       font-size: 14px;
       line-height: 1.21em;
       letter-spacing: 0.04em;
