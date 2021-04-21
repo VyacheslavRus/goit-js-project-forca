@@ -6,7 +6,7 @@ import './js/getWeather.js';
 // import './js/quoteForismatic';
 // import './js/scrollCountries';
 // import './js/weatherMain';
-// import './js/chart.js';
+import './js/chart.js';
 
 // const tyest = {
 //   city: 'Kiev',
