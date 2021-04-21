@@ -2,16 +2,23 @@
 .input-box {
   display: flex;
   justify-content: center;
-  padding-top: 30px;
-  
-}
-.inputForm {
+  margin-top: 30px;
   position: relative;
   width: 280px;
   height: 48px;
   @media (min-width: 768px) {
     width: 500px;
   }
+}
+.inputForm {
+  width: 280px;
+  height: 48px;
+  @media (min-width: 768px) {
+    width: 500px;
+  }
+  // width: 280px;
+  // height: 48px;
+  
   // @media (max-width: 425px) {
   //   max-width: 350px;
   // }
@@ -61,7 +68,7 @@
   &:before {
     content: '☆';
     top: -7px;
-    left: -1.5px;
+    // left: -58.5px;
     position: absolute;
     visibility: visible;
   }
@@ -72,8 +79,9 @@
 }
 // Location-Button
 .locationBtn {
+  z-index: 1;
   top: 13px;
-  left: 20px;
+  left:14px;
   position: absolute;
   fill: $gray-font-color;
   border-radius: 50%;

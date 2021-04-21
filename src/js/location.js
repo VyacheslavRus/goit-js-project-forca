@@ -3,8 +3,8 @@ import dataObject from './getWeather.js'
 
 
  function getFetch() {
-   return dataObject.getWeather({ latitude: localStorage.getItem('latitude'), longitude: localStorage.getItem('longitude') })
-    .then(data =>data)
+   return dataObject.getWeather(JSON.parse(localStorage.getItem('currentPos')))
+    .then(data =>console.log(data))
      .catch(error => alert(error, 'Ah Shit, Here We Go Again'))
    ;
  }
@@ -12,31 +12,41 @@ export default {getFetch}
 
 
 const ref = {
-    locBtn: document.querySelector('.locationBtn'),
- }
- 
-// export default async function getFetch() {
-//     const urlRequest = `weather?lat=${localStorage.getItem('latitude')}&lon=${localStorage.getItem('longitude')}&exclude=current&appid=${api.key}&units=metric`
-//  return fetch(api.base + urlRequest)
-//       .then(response => response.json())
-//      .then(response => response.cod ==='400' ? alert('Нет данных о вашей погоде!'): response)
-//     .catch(error => alert(error,'Ah Shit, Here We Go Again'))
- 
-// }
+  inputForm:document.querySelector('.inputForm'),
+  locBtn: document.querySelector('.locationBtn'),
+  input: document.querySelector('.search-box'),
+  checkbox: document.querySelector('.star'),
+}
+// function getLocationOnStar(e) {
+  
+// } 
+function getLocationOnInput(e) {
+  let inputCityName = e.currentTarget.value
+  localStorage.setItem('currentPos', JSON.stringify({city:inputCityName}))
+  setTimeout(() => {
+    getFetch() 
+}, 100);
+  console.log('city-fetch');
+}
 
- function getLocation(e) {
-  e.preventDefault()
- navigator.geolocation.getCurrentPosition(
-   function (position) {
-        localStorage.setItem('latitude', position.coords.latitude)
-        localStorage.setItem('longitude', position.coords.longitude)
-   }
-);
+function getLocationOnClick(e) {
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        localStorage.setItem('currentPos', JSON.stringify({latitude:position.coords.latitude, longitude:position.coords.longitude}))
+        // localStorage.setItem('longitude', position.coords.longitude)
+      }
+    )
 setTimeout(() => {
     getFetch() 
 }, 100);
+  console.log('location-fetch');
 }
 
 // document.addEventListener('DOMContentLoaded', getFetch);
 
-ref.locBtn.addEventListener('click', getLocation);
+ref.input.addEventListener('change', getLocationOnInput);
+ref.locBtn.addEventListener('click', getLocationOnClick);
+// ref.checkbox.addEventListener('click', getLocationOnStar);
+ref.inputForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+});
