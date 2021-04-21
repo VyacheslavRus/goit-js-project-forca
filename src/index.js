@@ -7,5 +7,6 @@ import './js/renderCurentWether.js';
 // import './js/scrollCountries';
 // import './js/weatherMain';
 // import './js/chart.js';
+import './js/renderSecondPart'
 
 // getWeth.getWeather({ city: 'Kiev' }).then(data => console.log(data));
