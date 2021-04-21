@@ -8,4 +8,4 @@ import getWeth from './js/getWeather.js';
 // import './js/weatherMain';
 // import './js/chart.js';
 
-getWeth.getWeather({ city: 'Kiev' }).then(data => console.log(data));
+// getWeth.getWeather({ city: 'Kiev' }).then(data => console.log(data));
