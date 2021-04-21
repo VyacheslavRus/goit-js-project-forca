@@ -1,14 +1,16 @@
 import locDataObject from './location.js';
 
 const ref = {
-  box1: document.querySelector('.weatherBox'),
+  box1: document.querySelector('#conBox'),
+  weBox: document.querySelector('.weatherBox'),
 };
 
 function renderFirstPart() {
+  // document.querySelector();
+  ref.weBox.style.flexDirection = 'column-reverse';
+  ref.box1.classList.remove('contentBox');
   locDataObject.getFetch().then(data => {
-    ref.box1.insertAdjacentHTML(
-      'afterbegin',
-      `
+    ref.box1.innerHTML = `
             <div class="firstPart">
                 <svg class="firstPart-icon" width="35" height="35">
                      <use href="./images/symbol-defs.svg#${data.currentWeatherIcon}"></use>
@@ -27,8 +29,7 @@ function renderFirstPart() {
                         </div>
                     </div>
                 </div>
-            </div>`,
-    );
+            </div>`;
 
     // let box2 = document.querySelector('.firstPart')
     // function getIcon() {
@@ -106,3 +107,5 @@ function renderFirstPart() {
   });
 }
 renderFirstPart();
+
+export default { renderFirstPart };

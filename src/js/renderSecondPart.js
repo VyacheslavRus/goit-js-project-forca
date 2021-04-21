@@ -1,5 +1,7 @@
 import api from './getWeather';
 import back from './setBackground.js';
+import renderCurrent from './renderCurrentWether.js';
+import renderQuote from './quoteForismatic.js';
 
 const div = document.querySelector('.additionalInfo');
 const click5days = document.querySelector('[data-action="fiveDays"]');
@@ -9,6 +11,8 @@ const todayClickFunc = () => {
   getFetch();
   clock();
   back.setBackground();
+  renderCurrent.renderFirstPart();
+  renderQuote.renderQuote();
   clickToday.removeEventListener('click', todayClickFunc);
   click5days.addEventListener('click', fiveDaysClickFunk);
 };

@@ -16,3 +16,5 @@ function renderQuote() {
   });
 }
 renderQuote();
+
+export default { renderQuote };

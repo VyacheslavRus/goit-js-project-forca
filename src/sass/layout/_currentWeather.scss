@@ -1,6 +1,5 @@
-.weatherBox{
+.weatherBox {
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 .firstPart {
@@ -14,12 +13,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     width: 500px;
     height: 300px;
     margin-top: 110px;
   }
-  @media screen and (min-width: 1280px){
+  @media screen and (min-width: 1280px) {
     width: 450px;
     margin-top: 92px;
   }
@@ -36,8 +35,8 @@
     text-align: center;
     color: #767d85;
     @media screen and (min-width: 768px) {
-        font-size: 18px;
-      }
+      font-size: 18px;
+    }
   }
   &-temperature {
     width: 160px;
@@ -52,24 +51,23 @@
       flex-direction: column;
     }
     &-max,
-    &-min{
+    &-min {
       margin-bottom: 3px;
       @media screen and (min-width: 768px) {
         margin-bottom: 10px;
       }
     }
 
-  
     &-main {
       font-weight: 300;
       font-size: 45px;
       line-height: 1.2em;
       letter-spacing: 0.04em;
       color: #ffffff;
-      @media screen and (min-width: 768px){
+      @media screen and (min-width: 768px) {
         font-size: 90px;
+      }
     }
-  }
     &-box {
       display: flex;
       text-align: center;
@@ -87,14 +85,13 @@
       margin-right: 10px;
       padding-right: 10px;
       border-right: 1px solid #27384a;
-      @media screen and (min-width: 768px){
+      @media screen and (min-width: 768px) {
         margin-right: 20px;
         padding-right: 20px;
-    }
+      }
     }
     &-minnumb,
     &-maxnumb {
-     
       font-size: 16px;
       line-height: 1.19;
       color: #ffffff;
@@ -104,7 +101,6 @@
     }
   }
 }
-
 
 //___________second part_______
 
@@ -117,10 +113,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  @media screen and (min-width: 768px){
+  @media screen and (min-width: 768px) {
     width: 500px;
   }
-  @media screen and (min-width: 1280px){
+  @media screen and (min-width: 1280px) {
     width: 630px;
     border-top-right-radius: 34px;
   }
@@ -134,12 +130,12 @@
 
     color: #ffffff;
 
-    @media screen and (min-width: 768px){
+    @media screen and (min-width: 768px) {
       font-size: 90px;
     }
   }
-  &-combi{
-    @media screen and (min-width: 1280px){
+  &-combi {
+    @media screen and (min-width: 1280px) {
       display: flex;
       justify-content: space-evenly;
       align-items: baseline;
@@ -152,15 +148,15 @@
     justify-content: space-between;
     text-align: center;
 
-    @media screen and (min-width: 768px){
+    @media screen and (min-width: 768px) {
       width: 193px;
     }
-    
+
     padding-top: 10px;
     &-month {
       margin-right: 10px;
       width: 97px;
-      
+
       border-right: 1px solid #ffffff;
     }
     &-month,
@@ -170,7 +166,7 @@
       letter-spacing: 0.04em;
 
       color: #ffffff;
-      @media screen and (min-width: 768px){
+      @media screen and (min-width: 768px) {
         font-size: 18px;
       }
     }
@@ -183,7 +179,7 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 40px;
-    @media screen and (min-width: 768px){
+    @media screen and (min-width: 768px) {
       width: 200px;
     }
     &-sunrise {
@@ -202,8 +198,8 @@
       letter-spacing: 0.04em;
 
       color: #ffffff;
-      
-      @media screen and (min-width: 768px){
+
+      @media screen and (min-width: 768px) {
         font-size: 18px;
       }
     }
