@@ -6,27 +6,31 @@ const PAGENUMBER = '1';
 const SECONDFILTERPARAMETR = 'city';
 
 function getBackgroundApi(cityName) {
-  return fetch(
-    `${MAINURL}&q=${cityName
-      .split(' ')
-      .join('-')
-      .toLowerCase()}&page=${PAGENUMBER}&per_page=${PERPAGE}&key=${USERKEY}`,
-  )
-    .then(responce => responce.json())
-    .then(data => data.hits)
-    .then(data => {
-      let dataSet = [];
-      data.forEach(el => {
-        if (
-          el.tags.split(', ').includes(cityName.toLowerCase()) &&
-          el.tags.split(', ').includes(SECONDFILTERPARAMETR)
-        ) {
-          dataSet.push(el.largeImageURL);
-        }
-      });
-      return dataSet[Math.round(Math.random() * (dataSet.length - 1))];
-    })
-    .catch(error => console.log(error));
+  try {
+    return fetch(
+      `${MAINURL}&q=${cityName
+        .split(' ')
+        .join('-')
+        .toLowerCase()}&page=${PAGENUMBER}&per_page=${PERPAGE}&key=${USERKEY}`,
+    )
+      .then(responce => responce.json())
+      .then(data => data.hits)
+      .then(data => {
+        let dataSet = [];
+        data.forEach(el => {
+          if (
+            el.tags.split(', ').includes(cityName.toLowerCase()) &&
+            el.tags.split(', ').includes(SECONDFILTERPARAMETR)
+          ) {
+            dataSet.push(el.largeImageURL);
+          }
+        });
+        return dataSet[Math.round(Math.random() * (dataSet.length - 1))];
+      })
+      .catch(error => console.log(error));
+  } catch {
+    return false;
+  }
 }
 
 export default { getBackgroundApi };

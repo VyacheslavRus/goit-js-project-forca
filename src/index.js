@@ -7,7 +7,7 @@ import './js/weatherFiveDays.js';
 // import './js/quoteForismatic';
 // import './js/scrollCountries';
 // import './js/weatherMain';
-import './js/chart.js';
+// import './js/chart.js';
 import './js/renderSecondPart';
 
 import './js/setBackground.js';
