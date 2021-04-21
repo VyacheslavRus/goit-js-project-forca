@@ -1,42 +1,73 @@
-//______one day_________
-
-.weatherBox {
-  width: 280px;
-  margin-top: 20%;
+.weatherBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.firstPart {
+  margin-top: 45px;
+  min-width: 280px;
   background: #102136;
   box-shadow: 0px 5px 33px rgba(84, 103, 126, 0.8);
   border-radius: 34px;
-
-  &-icon {
-    margin-left: 50%;
-    margin-top: 30px;
-    transform: translate(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 425px) {
+    max-width: 350px;
+    height: 190px;
   }
+  @media (min-width: 426px) and (max-width: 768px) {
+    margin-top: 106px;
+    width: 500px;
+    height: 300px;
+  }
+  @media (min-width: 769px) {
+    margin-top: 106px;
+    width: 500px;
+    height: 300px;
+  }
+  &-icon {
+    width: 35px;
+    height: 35px;
+  }
+  
 
   &-location {
-    padding-top: 10px;
-    margin-left: 110px;
+    margin-top: 20px;
     font-size: 16px;
     line-height: 1.1875em;
     display: flex;
     align-items: center;
     text-align: center;
     color: #767d85;
+    @media (min-width: 768px) {
+        font-size: 18px;
+        
+      }
   }
   &-temperature {
+    width: 160px;
     padding-top: 10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
-    padding-bottom: 30px;
+    @media (min-width: 768px) {
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
     &-main {
       font-weight: 300;
       font-size: 45px;
       line-height: 1.2em;
       letter-spacing: 0.04em;
-
       color: #ffffff;
+      @media (min-width: 768px) {
+        font-size: 90px;
+        
+      }
     }
     &-box {
       display: flex;
@@ -44,9 +75,12 @@
     &-box1,
     &-box2 {
       font-size: 14px;
-      line-height: 1.21em;
-
+      line-height: 1.21;
       color: #767d85;
+      @media (min-width: 768px) {
+        font-size: 18px;
+        
+      }
     }
     &-box1 {
       margin-right: 10px;
@@ -56,18 +90,29 @@
     &-minnumb,
     &-maxnumb {
       font-size: 16px;
-      line-height: 1.19em;
+      line-height: 1.19;
       color: #ffffff;
+      @media (min-width: 768px) {
+        font-size: 18px;
+        
+      }
     }
   }
 }
 
 //___________second part_______
 
-.contentBox {
-  width: 280px;
-  background: rgba(16, 33, 54, 0.8);
+.secondPartBox {
+  width: 100%;
+  background: $box-content-background;
   border-radius: 34px;
+  @media screen and (min-width: 768px){
+    width: 500px;
+  }
+  @media screen and (min-width: 1280px){
+    width: 630px;
+    border-top-right-radius: 34px;
+  }
   &-date {
     font-weight: 300;
     font-size: 45px;
@@ -77,6 +122,17 @@
     letter-spacing: 0.04em;
 
     color: #ffffff;
+
+    @media screen and (min-width: 768px){
+      font-size: 90px;
+    }
+  }
+  &-combi{
+    @media screen and (min-width: 1280px){
+      display: flex;
+      justify-content: space-evenly;
+      align-items: baseline;
+    }
   }
   &-dateBox {
     display: flex;
@@ -95,6 +151,9 @@
       letter-spacing: 0.04em;
 
       color: #ffffff;
+      @media screen and (min-width: 768px){
+        font-size: 18px;
+      }
     }
   }
   &-sun {
@@ -117,6 +176,10 @@
       letter-spacing: 0.04em;
 
       color: #ffffff;
+      
+      @media screen and (min-width: 768px){
+        font-size: 18px;
+      }
     }
     &-icon,
     &-icon {
