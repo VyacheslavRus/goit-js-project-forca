@@ -1,40 +1,55 @@
-import api from './getWeather'
-const div = document.querySelector('.contentBox');
+import api from './getWeather';
+import back from './setBackground.js';
+
+const div = document.querySelector('.additionalInfo');
 const click5days = document.querySelector('[data-action="fiveDays"]');
-const clickToday = document.querySelector('[data-action="today"]')
+const clickToday = document.querySelector('[data-action="today"]');
 
-clickToday.addEventListener('click', ()=>{
-    getFetch();
-    clock();
-})
+const todayClickFunc = () => {
+  getFetch();
+  clock();
+  back.setBackground();
+  clickToday.removeEventListener('click', todayClickFunc);
+  click5days.addEventListener('click', fiveDaysClickFunk);
+};
 
-click5days.addEventListener('click', ()=>{
-    clearInterval(interval)   
-})
+const fiveDaysClickFunk = () => {
+  clearInterval(interval);
+  back.setBackground();
+  clickToday.addEventListener('click', todayClickFunc);
+  click5days.removeEventListener('click', fiveDaysClickFunk);
+};
+
+click5days.addEventListener('click', fiveDaysClickFunk);
 
 function getFetch() {
-    api.getWeather({city: 'kiev'})
-    .then((data) => {
-        console.log(data);
-        renderSecPart(data)
+  api
+    .getWeather(JSON.parse(localStorage.getItem('currentPos')))
+    .then(data => {
+      console.log(data);
+      renderSecPart(data);
     })
     .catch(error => {
-        console.log(error);
-    })
+      console.log(error);
+    });
 }
-getFetch()
+getFetch();
 
 let interval;
 function clock() {
-    let time;
-    interval = setInterval(() => {
-        document.querySelector('.secondPartBox-dateBox-time').innerHTML = time= new Date().toLocaleTimeString()
-    }, 1000);
+  let time;
+  interval = setInterval(() => {
+    document.querySelector(
+      '.secondPartBox-dateBox-time',
+    ).innerHTML = time = new Date().toLocaleTimeString();
+  }, 1000);
 }
-clock()
+clock();
 
 function renderSecPart(data) {
-    div.insertAdjacentHTML('beforebegin', `<div class="secondPartBox">
+  div.insertAdjacentHTML(
+    'afterbegin',
+    `<div class="secondPartBox">
     <h2 class="secondPartBox-date">${data.everyDay[0].day}<sup>th</sup> ${data.currentDayOfWeek}</h2>
     <div class='secondPartBox-combi'>
     <div class="secondPartBox-dateBox">
@@ -49,8 +64,6 @@ function renderSecPart(data) {
     <use href="./images/symbol-defs.svg#icon-sunset"></use>
     </svg>${data.currentSunSet}</p>
     </div>
-    </div>`);
-  }
-
-
-
+    </div>`,
+  );
+}

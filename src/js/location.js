@@ -5,8 +5,8 @@ function getFetch() {
   return dataObject
     .getWeather(JSON.parse(localStorage.getItem('currentPos')))
     .then(data => {
-      console.log(data);
       back.setBackground();
+      return data;
     })
     .catch(error => alert(error, 'Ah Shit, Here We Go Again'));
 }

@@ -2,8 +2,7 @@ import bgImageUrl from './getBackgroundApi.js';
 
 const renderBackground = imgUrl => {
   const body = document.querySelector('body');
-  console.log(imgUrl);
-  body.style.backgroundImage = `url(${imgUrl})`;
+  body.style.backgroundImage = `linear-gradient(0.56deg, #000000 -13.48%, rgba(0, 0, 0, 0) 78.75%), url(${imgUrl})`;
 };
 
 const setBackground = () => {
@@ -30,10 +29,3 @@ const setBackground = () => {
 setBackground();
 
 export default { setBackground };
-// try {
-//   setBackground();
-// } catch {
-//   renderBackground(
-//     'https://images.wallpaperscraft.ru/image/nebo_oblaka_goluboj_108523_3840x2400.jpg',
-//   );
-// }
