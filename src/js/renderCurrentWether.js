@@ -3,12 +3,14 @@ import locDataObject from './location.js';
 const ref = {
   box1: document.querySelector('#conBox'),
   weBox: document.querySelector('.weatherBox'),
+  positionBtn:document.querySelector('.positionBtn'),
 };
 
 function renderFirstPart() {
   // document.querySelector();
   ref.weBox.style.flexDirection = 'column-reverse';
   ref.box1.classList.remove('contentBox');
+  ref.positionBtn.classList.remove('positionBtn');
   locDataObject.getFetch().then(data => {
     ref.box1.innerHTML = `
             <div class="firstPart">
