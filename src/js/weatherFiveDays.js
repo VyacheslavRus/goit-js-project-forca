@@ -10,6 +10,7 @@ const refs = {
   scrollBtnL: document.querySelector('[data-action="left"]'),
   weBox: document.querySelector('.weatherBox'),
   form: document.querySelector('.inputForm'),
+  buttonBox:document.querySelector('.buttonBox'),
   positionBtn:document.querySelector('.positionBtn'),
 };
 
@@ -31,7 +32,7 @@ function render(data) {
   refs.weBox.style.flexDirection = 'column';
   refs.contentBox.innerHTML = dayTemplate(data.everyDay);
   document.querySelector('.contentBox-location').textContent = `${data.cityName} ${data.countryName}`;
-  // refs.positionBtn.classList.add('positionBtn');
+  refs.buttonBox.classList.add('positionBtn');
   document.querySelector('.additionalInfo').innerHTML = '';
 
 
