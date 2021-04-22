@@ -1,34 +1,33 @@
 // Input-serch
 .input-box {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
+  margin: 30px auto 0;
   position: relative;
-  width: 280px;
+  min-width: 280px;
   height: 48px;
   @media (min-width: 768px) {
     width: 500px;
   }
+   @media (min-width: 1280px) {
+    width: 520px;
+  }
+  
 }
 .inputForm {
-  width: 280px;
+  width: -webkit-fill-available;
   height: 48px;
   @media (min-width: 768px) {
     width: 500px;
   }
-  // width: 280px;
-  // height: 48px;
-  
-  // @media (max-width: 425px) {
-  //   max-width: 350px;
-  // }
-  // @media (min-width: 426px) and (max-width: 768px) {
-  //   width: 500px;
-  // }
+  @media (min-width: 768px) {
+    width: 500px;
+  }
+   @media (min-width: 1280px) {
+    width: 520px;
+  }
 }
 .search-box {
   padding-left: 57px;
-  width: 280px;
+  width: inherit;
   height: 48px;
   border-radius: 30px;
   outline: none;
@@ -37,6 +36,15 @@
   @media (min-width: 768px) {
     width: 500px;
     font-size: 18px;
+  }
+  @media (min-width: 768px) {
+    width: 500px;
+  }
+  @media (min-width: 768px) {
+    width: 500px;
+  }
+   @media (min-width: 1280px) {
+    width: 520px;
   }
 
   &::placeholder {
@@ -53,7 +61,7 @@
 
 //star checkbox
 .star {
-  right: 20px;
+  right: 19px;
   top: 12px;
   position: absolute;
   color: $gray-font-color;
