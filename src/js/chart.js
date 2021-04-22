@@ -3,12 +3,10 @@ import getWeatherInfo from './getWeather.js'
 import chartMarkup from '../templates/chartTemplate.hbs';
 
 
-
 const addInfo = document.querySelector('.additionalInfo');
-const hideChartTitle = document.querySelector('.hide-chart-title');
-const hideChartBtn = document.querySelector('.hide-chart-btn');
-// const openBtn = document.querySelector('.open-chart-btn')
-
+const fiveDaysBtn = document.querySelector('[data-action="fiveDays"]');
+let showChartContainer
+let chartWidth = 0;
 
     let arrHumidity = [];
     let arrdayAvarageTemp =[];
@@ -20,17 +18,40 @@ const hideChartBtn = document.querySelector('.hide-chart-btn');
     let arrDay = [];
     let arrDate = [];
     
+    fiveDaysBtn.addEventListener('click', onShowChartContainer);
 
-openBtn.addEventListener('click', openChart) 
-    
+    function onShowChartContainer(){
+        
+    addInfo.innerHTML = `<div class="show-chart-container">
+        <h2 class="chart-title show-chart">Show Chart</h2>
+            <button class="pointer-button open-chart-btn">
+                <svg class="icon-arrow-down-svg">
+                    <use href="./images/symbol-defs.svg#icon-arrow-down"></use>
+                </svg>
+            </button>
+        </div>`;
+
+let showChartContainer = document.querySelector('.show-chart-container')
+showChartContainer.addEventListener('click', openChart) 
+
 function openChart(){
-    getWeatherInfo.getWeather({ latitude: 50.4333, longitude: 30.5167 })
+    arrHumidity = [];
+    arrdayAvarageTemp =[];
+    arrWindSpeed = [];
+    arrPressure = [];
+
+    arrMonth = [];
+    arrYear = [];
+    arrDay = [];
+    arrDate = [];
+    getWeatherInfo.getWeather(JSON.parse(localStorage.getItem('currentPos')))
     .then(data => render(data.everyDay))
     .catch(error => console.log(error));
 }
-
+}
 
 let chart; 
+let myChart;
 function render(data) {
     data.forEach(el => {
         arrdayAvarageTemp.push(el.dayAvarageTemp);
@@ -44,18 +65,35 @@ function render(data) {
     for (let i = 0; i < 5; i++) {
         arrDate.push(arrMonth[i]+' '+arrDay[i]+', '+arrYear[i])
     }
+    
     addInfo.innerHTML = chartMarkup(data);
+
     chart = document.querySelector('#myChart');
-    renderChart(); 
+    renderChart();
+    
+    
+    // function onResizingWindow(){
+    //     // if(window.innerHeight <= 768){
+    //     //     window.chart.options.scales.y.title.display = false;
+    //     // }
+    //     // else{
+    //     //     window.chart.options.scales.y.title.display = true;
+    //     // }
+    //     // chart.update();
+    //     console.log(chart);
+    // }
+    // onResizingWindow()
+    
+    const hideChartContainer = document.querySelector('.hide-chart-container');
+    hideChartContainer.addEventListener('click', hideChart);
 }
 
-
-    function renderChart(){
+function renderChart(){
         Chart.defaults.font.size = 14;
         Chart.defaults.color = 'rgba(255, 255, 255, 0.5)';
         Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.2)';
-
-    const myChart = new Chart(chart, {
+        
+        myChart = new Chart(chart, {
         type: 'line',
         data: {
             labels: arrDate,
@@ -95,40 +133,59 @@ function render(data) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            animations: {
+                tension: {
+                    duration: 1500,
+                    easing: 'easeOutSine',
+                    from: 1,
+                    to: 0,
+                    loop: true
+                }
+            },
             scales: {
                 y: {
-                    
-                    // title: {
-                    //     display: true,
-                    //     text:'Value of Indicators',
-                    //     color: 'rgba(255, 255, 255, 0.5)',
-                    //     font:{
-                    //         family: 'Lato',
-                    //         size: 12,
-                    //         weight: 400,
-                    //     },
-                    //     padding:{bottom:10}
-                    // },
+                    title: {
+                        display: true,
+                        text:'Value of Indicators',
+                        color: 'rgba(255, 255, 255, 0.5)',
+                        font:{
+                            family: 'Lato',
+                            size: 12,
+                            weight: 400,
+                        },
+                        padding:{bottom:10}
+                    },
                     stacked: true,
                     beginAtZero: false,
                     gridLines: {
                         display: true,
                     }
                 },
-                
-            x: {
+                x: {
+                    ticks:{
+                        align:'start'
+                    },
                 gridLines: {
                     display: false,
-                }
+                }, 
             }
             },
             plugins:{
+                
                 legend:{
                     position: 'top',
                     align: 'start',
-    
+                
                     labels: {
-                        color: 'rgba(255, 255, 255, 0.5)',
                         boxWidth: 10,
                         boxHeight:10,
                         },
@@ -144,23 +201,29 @@ function render(data) {
                         },
                 },
             },
+        },
+        onResize: function(chart, size){
+            setChartWidth()
+            myChart.update()
         }
-        
     });
 }
-
+    
 
 function hideChart(){
-    if (addInfo.style.display === "block"){
-        addInfo.style.display = "none";
-    }else{
-        addInfo.style.display = "block";
-    }
+    onShowChartContainer();
 }
 
-// hideChartTitle.addEventListener('click', hideChart);
-// hideChartBtn.addEventListener('click', hideChart);
+function setChartWidth() {
+    chartWidth = chart.width
 
+    if (chartWidth > 1108) {
+        myChart.options.scales.y.title.display = false
+    } else {
+        myChart.options.scales.y.title.display = true    
+    }  
+    myChart.update()
+    }
 
 
 
