@@ -1,6 +1,6 @@
 import getWeather from './getWeather.js';
 import dayTemplate from '../templates/5daysTemplate.hbs';
-
+import hourTemplate from '../templates/hourTemplate.hbs';
 import Siema from './siema.js';
 
 const refs = {
@@ -11,28 +11,25 @@ const refs = {
   weBox: document.querySelector('.weatherBox'),
   form: document.querySelector('.inputForm'),
   buttonBox:document.querySelector('.buttonBox'),
-  positionBtn:document.querySelector('.positionBtn'),
+  positionBtn: document.querySelector('.positionBtn'),
+  moreinfo:document.querySelector('.contentBox-cont-box-moreInfo'),
 };
 
-refs.fiveDays.addEventListener('click', showWeather);
-refs.form.addEventListener('submit', showWeather);
-function showWeather(e) {
-  // e.preventDefault();
-  // const inputValue = e.target.value;
-  //  getWeather.getWeather(inputValue).then(data => {
-  //    render(data)
-  //  });
-  // console.log(inputValue);
-  // getWeather.query = e.currentTarget.elements.query.value;
-  fetchWeather();
-}
+refs.fiveDays.addEventListener('click', fetchWeather);
 
 function render(data) {
   refs.contentBox.classList.add('contentBox');
   refs.weBox.style.flexDirection = 'column';
   refs.contentBox.innerHTML = dayTemplate(data.everyDay);
+  
+  
   document.querySelector('.contentBox-location').textContent = `${data.cityName} ${data.countryName}`;
   refs.buttonBox.classList.add('positionBtn');
+  
+
+  document.querySelector('.contentBox-cont-box-moreInfo').addEventListener('click', () => { refs.contentBox.insertAdjacentHTML('beforeend', hourTemplate(data.eachDayEveryThreeHours[0]));} );
+  
+  
   document.querySelector('.additionalInfo').innerHTML = '';
 
 
@@ -51,6 +48,14 @@ function render(data) {
       .querySelector('[data-action="left"]')
       .addEventListener('click', () => mySiema.next());
   // }
+
+//  refs.moreinfo.addEventListener('click',fetchWeather)
+   
+  // document.querySelector('.contentBox-cont-box-moreInfo').insertAdjacentHTML('afterbegin', hourTemplate(data.eachDayEveryThreeHours));
+}
+function render2(data) {
+  document.querySelector('.contentBox-cont').insertAdjacentHTML('beforeend', hourTemplate(data.eachDayEveryThreeHours));
+  // console.log(123);
 }
 function fetchWeather() {
   return getWeather
