@@ -19,6 +19,9 @@
 
   @media screen and (min-width: 1280px) {
     width: 340px;
+    margin-top: -20%;
+    margin-left: 74%;
+    padding: 0;
   }
 }
 
@@ -34,8 +37,10 @@
     width: 49px;
     height: 45px;
   }
+  @media screen and (min-width: 1280px) {
+    margin-bottom: -30px;
+  }
 }
-
 .quoteIcon use {
   justify-content: right;
   display: block;

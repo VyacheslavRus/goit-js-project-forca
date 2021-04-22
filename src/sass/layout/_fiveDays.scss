@@ -31,6 +31,9 @@
         letter-spacing: 0.04em;
         color: $white-font-color;
         opacity: 0.55;
+        &:hover {
+          color: $orange-color;
+        }
       }
       &-date {
         font-size: 16px;
@@ -117,6 +120,9 @@
     // margin-right: 20px;
     &:not(:last-child) {
       margin-right: 20px;
+    }
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
     &-time {
       font-size: 14px;
@@ -317,7 +323,7 @@
   }
   .buttonBox {
     margin-top: 21px;
-    margin-left: 74%;
+    margin-right: -35%;
     transform: translate(0%, 0%);
     margin-bottom: 65px;
   }
