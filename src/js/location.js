@@ -1,6 +1,10 @@
 import dataObject from './getWeather.js';
 import back from './setBackground.js';
 
+JSON.parse(localStorage.getItem('currentPos')) === null
+  ? localStorage.setItem('currentPos', JSON.stringify({ city: 'Kiev' }))
+  : '';
+
 function getFetch() {
   return dataObject
     .getWeather(JSON.parse(localStorage.getItem('currentPos')))
