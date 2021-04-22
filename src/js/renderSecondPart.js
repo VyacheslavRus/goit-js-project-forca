@@ -53,9 +53,7 @@ function clock() {
 clock();
 
 function renderSecPart(data) {
-  div.insertAdjacentHTML(
-    'afterbegin',
-    `<div class="secondPartBox">
+  div.innerHTML = `<div class="secondPartBox">
     <h2 class="secondPartBox-date">${data.everyDay[0].day}<sup>th</sup> ${data.currentDayOfWeek}</h2>
     <div class='secondPartBox-combi'>
     <div class="secondPartBox-dateBox">
@@ -70,6 +68,7 @@ function renderSecPart(data) {
     <use href="./images/symbol-defs.svg#icon-sunset"></use>
     </svg>${data.currentSunSet}</p>
     </div>
-    </div>`,
-  );
+    </div>`;
 }
+
+export default { getFetch };
