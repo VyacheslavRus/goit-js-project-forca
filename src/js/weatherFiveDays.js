@@ -2,7 +2,7 @@ import getWeather from './getWeather.js';
 import dayTemplate from '../templates/5daysTemplate.hbs';
 import hourTemplate from '../templates/hourTemplate.hbs';
 import Siema from './siema.js';
-import { has } from 'core-js/core/dict';
+
 
 const refs = {
   contentBox: document.querySelector('#conBox'),
