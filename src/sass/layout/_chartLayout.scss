@@ -18,8 +18,16 @@
     stroke: $white-background;
 }
     
+.icon-arrow-down-svg{
+    display: block;
+    margin: 0 auto;
+    width: 24px;
+    height: 28px;
+    fill: $white-background;
+    stroke: $white-background;
+}
 
-.hide-chart-title{
+.chart-title{
     color: $orange-background;
     border-bottom: 1px solid $orange-background;
     font-size: 14px;
@@ -47,6 +55,7 @@
     }
     @media screen and (min-width: 768px){
         overflow-x: inherit;
+        padding-bottom: 0;
     }
     @media screen and (min-width: 1280px){
         overflow-x: inherit;
@@ -64,13 +73,34 @@
     margin-top: 30px;
     padding-right: 17px;
     padding-left: 17px;
+
+    @media screen and (min-width: 768px){
+        padding-left: 0;
+        padding-right: 0;
+    }
+    @media screen and (min-width: 1280px){
+        width: 1060px;
+        height: 540px;
+}
+
 }
 
 .chart-canvas{
-    width:600px;
+    width:554px;
     height: 425px;
     position: relative;
     margin: auto;
+
+    @media screen and (min-width: 768px){
+        width: 588px;
+        height: 391px;
+        margin-right: 19px;
+}
+    @media screen and (min-width: 1280px){
+        width: 822px;
+        height: 412px;
+        margin-right:158px;
+}
 }
 
 .hide-chart-container{
@@ -81,7 +111,13 @@
 
 }
 
-#myChart{
-    
+.show-chart-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
 }
 
+.is-hidden{
+    display: none;
+}
