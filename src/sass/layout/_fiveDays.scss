@@ -81,7 +81,7 @@
         border: none;
         background: rgba(16, 33, 54, 0);
         padding-top: 5px;
-        padding-left: 7px;
+        padding-left: 15px;
         font-weight: 700;
         font-size: 12px;
         line-height: 1.16em;
@@ -104,28 +104,14 @@
       background: rgba(16, 33, 54, 0);
       opacity: 0.5;
       fill: #ffffff;
-      margin-left: 15px;
-      margin-right: 10px;
+      margin-left: 13px;
+      margin-right: 15px;
     }
   }
 }
 ::-webkit-scrollbar {
   display: none;
 }
-
-// ::-webkit-scrollbar-track {
-//   background-color: rgba(255, 255, 255, 0.2);
-// }
-
-// ::-webkit-scrollbar {
-//   height: 2px;
-//   background-color: rgba(255, 255, 255, 0.2);
-// }
-
-// ::-webkit-scrollbar-thumb {
-//   background-color: $orange-color;
-//   margin-bottom: -30px;
-// }
 
 @media screen and (min-width: 768px) {
   .contentBox {
@@ -138,9 +124,6 @@
       line-height: 1.21em;
     }
     &-cont {
-      display: flex;
-
-      // overflow-x: scroll;
       &-box {
         padding-top: 0px;
         &:not(:last-child) {
@@ -157,12 +140,10 @@
           padding-top: 10px;
         }
         &-icon {
-          margin-left: 12px;
+          margin-left: 40px;
           margin-top: 15px;
         }
         &-cont {
-          display: flex;
-          justify-content: center;
           padding-top: 15px;
           &-box1 {
             border-right: 1px solid #27384a;
@@ -184,6 +165,7 @@
           line-height: 1.21em;
           padding-top: 15px;
           padding-bottom: 0;
+          padding-left: 26px;
         }
       }
     }
@@ -192,23 +174,23 @@
     }
   }
   .buttonBox {
-    margin-top: 50%;
     margin-left: 50%;
-    transform: translate(-50%, -50%);
-    margin-bottom: 90px;
+    transform: translate(-57%);
+  }
+  .positionBtn {
+    margin-top: 300px;
   }
 }
 @media screen and (min-width: 1280px) {
   .contentBox {
     width: 1060px;
-    padding: 40px 100px;
+    padding: 40px 50px;
     &-location {
       top: -55px;
       font-size: 28px;
       line-height: 1.21em;
     }
     &-cont {
-      display: flex;
       &-box {
         padding-top: 0px;
         &:not(:last-child) {
@@ -225,12 +207,10 @@
           padding-top: 10px;
         }
         &-icon {
-          margin-left: 12px;
+          margin-left: 40%;
           margin-top: 20px;
         }
         &-cont {
-          display: flex;
-          justify-content: center;
           padding-top: 15px;
           &-box1 {
             border-right: 1px solid #27384a;
@@ -248,10 +228,7 @@
           }
         }
         &-moreInfo {
-          font-size: 14px;
-          line-height: 1.21em;
-          padding-top: 15px;
-          padding-bottom: 0;
+          padding-left: 33%;
         }
       }
     }
@@ -260,9 +237,9 @@
     }
   }
   .buttonBox {
-    margin-top: 50%;
+    margin-top: 21px;
     margin-left: 74%;
     transform: translate(0%, 0%);
-    margin-bottom: 30px;
+    margin-bottom: 65px;
   }
 }
