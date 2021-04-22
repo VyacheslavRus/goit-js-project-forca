@@ -12,6 +12,7 @@ const WEEK = [
   'Friday',
   'Saturday',
 ];
+
 const MONTH = [
   'Jan',
   'Feb',
@@ -39,7 +40,7 @@ const MONTHLONG = [
   'September',
   'October',
   'November',
-  'Dec',
+  'December',
 ];
 
 function apiFiveDaysEveryThreeHours(locationString) {
@@ -105,6 +106,7 @@ const getWeatherApi = async ({ city, latitude, longitude }) => {
   weatherData.currentSunRise = getTimeString(
     new Date(everyDayObject.current.sunrise * 1000),
   );
+
   weatherData.currentSunSet = getTimeString(
     new Date(everyDayObject.current.sunset * 1000),
   );
@@ -124,6 +126,7 @@ const getWeatherApi = async ({ city, latitude, longitude }) => {
       windSpeed: Math.round(el.wind_speed * 10) / 10,
     });
   });
+
   weatherData.everyDay = weatherData.everyDay.slice(0, DAYSFORFORECAST);
 
   let dayCounter = new Date().getDate();
