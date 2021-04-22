@@ -27,6 +27,21 @@ const MONTH = [
   'Dec',
 ];
 
+const MONTHLONG = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'Dec',
+];
+
 function apiFiveDaysEveryThreeHours(locationString) {
   return fetch(
     `${BASEURL}forecast?${locationString}&appid=${APIKEY}&cnt=${UNITSCOUNT}&units=${UNITS}`,
@@ -82,6 +97,8 @@ const getWeatherApi = async ({ city, latitude, longitude }) => {
   weatherData.currentDayOfWeek = WEEK[
     new Date(everyDayObject.current.dt * 1000).getDay()
   ].slice(0, 3);
+  weatherData.currentMonth =
+    MONTHLONG[new Date(everyDayObject.current.dt * 1000).getMonth()];
   weatherData.currentTemp = Math.round(everyDayObject.current.temp);
   weatherData.currentMinTemp = Math.round(everyDayObject.daily[0].temp.min);
   weatherData.currentMaxTemp = Math.round(everyDayObject.daily[0].temp.max);

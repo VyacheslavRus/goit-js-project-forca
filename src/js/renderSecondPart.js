@@ -41,6 +41,7 @@ function getFetch() {
 getFetch();
 
 let interval;
+
 function clock() {
   let time;
   interval = setInterval(() => {
@@ -58,7 +59,7 @@ function renderSecPart(data) {
     <h2 class="secondPartBox-date">${data.everyDay[0].day}<sup>th</sup> ${data.currentDayOfWeek}</h2>
     <div class='secondPartBox-combi'>
     <div class="secondPartBox-dateBox">
-    <p class="secondPartBox-dateBox-month">${data.everyDay[0].month}</p>
+    <p class="secondPartBox-dateBox-month">${data.currentMonth}</p>
     <p class="secondPartBox-dateBox-time"></p>
     </div>
     <div class="secondPartBox-sun">
