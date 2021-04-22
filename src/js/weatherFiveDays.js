@@ -47,29 +47,18 @@ function render(data) {
   
   // document.querySelector('.contentBox-cont-box-moreInfo').addEventListener('click', () => { refs.contentBox.insertAdjacentHTML('beforeend', hourTemplate(data.eachDayEveryThreeHours[0]));} );
    function hasClass(elem, className) {
-    return elem.className.split(' ').indexOf(className) > -1;
+    return elem.className.split(' ').includes(className) > -1;
   }
   document.addEventListener('click', function (e) {
     e.preventDefault();
     if (hasClass(e.target, 'contentBox-cont-box-moreInfo')) {
-       document.querySelector('.forMoreInfo').innerHTML = hourTemplate(data.eachDayEveryThreeHours[1]);
+      document.querySelector('.forMoreInfo').innerHTML = hourTemplate(data.eachDayEveryThreeHours[1]);
+      document.querySelector('.forMoreInfo').style.display = (document.querySelector('.forMoreInfo').style.display == "none") ? "block" : "none";
     }
   },false);
-
-  // document.addEventListener('click', function (e) {
-  //   e.preventDefault();
-  //   if (e.target.nodeName !== 'BUTTON') {
-  //     return;
-  //   }
-  //   document.querySelector('.forMoreInfo').innerHTML = hourTemplate(data.eachDayEveryThreeHours[1]);
-
-  // });
-  
+ 
 }
-// function render2(data) {
-//   document.querySelector('.contentBox-cont').insertAdjacentHTML('beforeend', hourTemplate(data.eachDayEveryThreeHours));
-//   // console.log(123);
-// }
+
 function fetchWeather() {
   return getWeather
     .getWeather(JSON.parse(localStorage.getItem('currentPos')))

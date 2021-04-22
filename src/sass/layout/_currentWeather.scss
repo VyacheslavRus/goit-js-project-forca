@@ -19,6 +19,7 @@
     margin-top: 110px;
   }
   @media screen and (min-width: 1280px) {
+    margin-left: 100%;
     width: 450px;
     margin-top: 92px;
   }
@@ -106,7 +107,7 @@
 
 .secondPartBox {
   width: 280px;
-  background: $box-content-background;
+  background: rgba(16, 33, 54, 0.6);
   border-radius: 34px;
   box-shadow: 0px 5px 33px rgba(16, 33, 54, 0.6);
   display: flex;
@@ -117,6 +118,7 @@
     width: 500px;
   }
   @media screen and (min-width: 1280px) {
+    margin-right: 65%;
     width: 630px;
     border-top-right-radius: 34px;
   }
