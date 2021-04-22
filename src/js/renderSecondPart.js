@@ -11,6 +11,7 @@ const todayClickFunc = () => {
   getFetch();
   clock();
   back.setBackground();
+  div.innerHTML = '';
   renderCurrent.renderFirstPart();
   renderQuote.renderQuote();
   clickToday.removeEventListener('click', todayClickFunc);
