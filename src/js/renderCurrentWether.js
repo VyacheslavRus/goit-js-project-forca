@@ -1,4 +1,5 @@
-import locDataObject from './location.js';
+import api from './getWeather.js';
+
 
 const ref = {
   box1: document.querySelector('#conBox'),
@@ -11,7 +12,7 @@ function renderFirstPart() {
   ref.weBox.style.flexDirection = 'column-reverse';
   ref.box1.classList.remove('contentBox');
   ref.positionBtn.classList.remove('positionBtn');
-  locDataObject.getFetch().then(data => {
+  api.getWeather(JSON.parse(localStorage.getItem('currentPos'))).then(data => {
     ref.box1.innerHTML = `
             <div class="firstPart">
                 <svg class="firstPart-icon" width="35" height="35">
@@ -32,7 +33,6 @@ function renderFirstPart() {
                     </div>
                 </div>
             </div>`;
-
   });
 }
 renderFirstPart();
