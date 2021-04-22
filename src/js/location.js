@@ -33,17 +33,20 @@ function addLiTempl() {
 
     if (getlocalSorArr !== null) {
     setfavArrTolocalStorage = getlocalSorArr.favPos
-      document.querySelector('.city_list').insertAdjacentHTML('beforeend', liTempl(getlocalSorArr))
-
-      
+      document.querySelector('.city_list').insertAdjacentHTML('beforeend', liTempl(getlocalSorArr))  
   }
-
+   
+  if (setfavArrTolocalStorage.length === 0) {
+    document.querySelector('.favBtn').style.display = 'none'
+  } else {
+    document.querySelector('.favBtn').style.display = 'block'
+  }
 }
 
 let inputCityName
 let setfavArrTolocalStorage = [];
 
-function getLocationOnStar() {
+function getLocationOnStar(e) {
   if (setfavArrTolocalStorage.includes(inputCityName)){
     alert('Етот город добавлен в избранное!')
   } else { 
@@ -55,10 +58,14 @@ function getLocationOnStar() {
       document.querySelector('.city_list').insertAdjacentHTML('beforeend',`<li class="list_item">
     <p class="list_item_name">${inputCityName}</p> <button class="close"> <svg class="svg">
             <use href="./images/symbol-defs.svg#icon-close"></use></svg> </button></li>`)
-      
+      document.querySelector('.favBtn').style.display = 'block'
     }
+    
   };
+ 
 }
+
+
 
 
 
@@ -79,24 +86,29 @@ function deliteCauntry(e) {
     dellCountry.push(btn.parentNode.textContent.replace(/\s+/g, ' ').trim())
     setfavArrTolocalStorage.splice(setfavArrTolocalStorage.indexOf(dellCountry[0]), 1)
     localStorage.setItem('favPos', JSON.stringify({ favPos: setfavArrTolocalStorage }))
-  }
-    
+    if (setfavArrTolocalStorage.length===0) {
+ document.querySelector('.favBtn').style.display = 'none'
+}
+  }   
   if (e.target) {
-    console.log(e.target.textContent, "PPPPPPPP");
     localStorage.setItem('currentPos', JSON.stringify({ city: e.target.textContent }))
-
     getFetch();
-
   }
-
-
 }
 
-
-
-
+if (setfavArrTolocalStorage.length===0) {
+ document.querySelector('.favBtn').style.display = 'none'
+}
+if (setfavArrTolocalStorage.includes(inputCityName)) {
+  let checkValue = document.querySelector('.star').checked = true
+  console.log(checkValue);
+  console.log(setfavArrTolocalStorage);
+  }
 
 function getLocationOnInput(e) {
+if (setfavArrTolocalStorage.includes(e.currentTarget.value)) {
+  let checkValue = document.querySelector('.star').checked = true
+}
   inputCityName = e.currentTarget.value;
   localStorage.setItem('currentPos', JSON.stringify({ city: inputCityName }));
   setTimeout(() => {
