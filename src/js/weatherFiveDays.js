@@ -2,6 +2,7 @@ import getWeather from './getWeather.js';
 import dayTemplate from '../templates/5daysTemplate.hbs';
 import hourTemplate from '../templates/hourTemplate.hbs';
 import Siema from './siema.js';
+import { has } from 'core-js/core/dict';
 
 const refs = {
   contentBox: document.querySelector('#conBox'),
@@ -12,7 +13,9 @@ const refs = {
   form: document.querySelector('.inputForm'),
   buttonBox:document.querySelector('.buttonBox'),
   positionBtn: document.querySelector('.positionBtn'),
-  moreinfo:document.querySelector('.contentBox-cont-box-moreInfo'),
+  moreinfo: document.querySelector('.contentBox-cont-box-moreInfo'),
+  contentBoxButton: document.querySelector('.contentBox-button'),
+  forMoreInfo:document.querySelector('.forMoreInfo'),
 };
 
 refs.fiveDays.addEventListener('click', fetchWeather);
@@ -20,19 +23,11 @@ refs.fiveDays.addEventListener('click', fetchWeather);
 function render(data) {
   refs.contentBox.classList.add('contentBox');
   refs.weBox.style.flexDirection = 'column';
-  refs.contentBox.innerHTML = dayTemplate(data.everyDay);
-  
-  
+  refs.contentBox.innerHTML = dayTemplate(data.everyDay);  
   document.querySelector('.contentBox-location').textContent = `${data.cityName} ${data.countryName}`;
   refs.buttonBox.classList.add('positionBtn');
-  
-
-  document.querySelector('.contentBox-cont-box-moreInfo').addEventListener('click', () => { refs.contentBox.insertAdjacentHTML('beforeend', hourTemplate(data.eachDayEveryThreeHours[0]));} );
-  
-  
   document.querySelector('.additionalInfo').innerHTML = '';
-
-
+  
   // if ($(window).width() < 768) {
     const mySiema = new Siema({
       // selector: '.contentBox-cont-box',
@@ -49,14 +44,32 @@ function render(data) {
       .addEventListener('click', () => mySiema.next());
   // }
 
-//  refs.moreinfo.addEventListener('click',fetchWeather)
-   
-  // document.querySelector('.contentBox-cont-box-moreInfo').insertAdjacentHTML('afterbegin', hourTemplate(data.eachDayEveryThreeHours));
+  
+  // document.querySelector('.contentBox-cont-box-moreInfo').addEventListener('click', () => { refs.contentBox.insertAdjacentHTML('beforeend', hourTemplate(data.eachDayEveryThreeHours[0]));} );
+   function hasClass(elem, className) {
+    return elem.className.split(' ').indexOf(className) > -1;
+  }
+  document.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (hasClass(e.target, 'contentBox-cont-box-moreInfo')) {
+       document.querySelector('.forMoreInfo').innerHTML = hourTemplate(data.eachDayEveryThreeHours[1]);
+    }
+  },false);
+
+  // document.addEventListener('click', function (e) {
+  //   e.preventDefault();
+  //   if (e.target.nodeName !== 'BUTTON') {
+  //     return;
+  //   }
+  //   document.querySelector('.forMoreInfo').innerHTML = hourTemplate(data.eachDayEveryThreeHours[1]);
+
+  // });
+  
 }
-function render2(data) {
-  document.querySelector('.contentBox-cont').insertAdjacentHTML('beforeend', hourTemplate(data.eachDayEveryThreeHours));
-  // console.log(123);
-}
+// function render2(data) {
+//   document.querySelector('.contentBox-cont').insertAdjacentHTML('beforeend', hourTemplate(data.eachDayEveryThreeHours));
+//   // console.log(123);
+// }
 function fetchWeather() {
   return getWeather
     .getWeather(JSON.parse(localStorage.getItem('currentPos')))
