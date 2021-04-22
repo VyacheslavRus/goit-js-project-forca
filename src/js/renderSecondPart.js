@@ -1,59 +1,73 @@
-import api from './getWeather'
-const div = document.querySelector('.contentBox');
+import api from './getWeather';
+import back from './setBackground.js';
+import renderCurrent from './renderCurrentWether.js';
+import renderQuote from './quoteForismatic.js';
+
+const div = document.querySelector('.additionalInfo');
 const click5days = document.querySelector('[data-action="fiveDays"]');
-const clickToday = document.querySelector('[data-action="today"]')
-console.log(click5days);
+const clickToday = document.querySelector('[data-action="today"]');
 
-clickToday.addEventListener('click', ()=>{
-    getFetch();
-    clock();
-})
+const todayClickFunc = () => {
+  getFetch();
+  clock();
+  back.setBackground();
+  renderCurrent.renderFirstPart();
+  renderQuote.renderQuote();
+  clickToday.removeEventListener('click', todayClickFunc);
+  click5days.addEventListener('click', fiveDaysClickFunk);
+};
 
-click5days.addEventListener('click', ()=>{
-    clearInterval(interval)   
-})
+const fiveDaysClickFunk = () => {
+  clearInterval(interval);
+  back.setBackground();
+  clickToday.addEventListener('click', todayClickFunc);
+  click5days.removeEventListener('click', fiveDaysClickFunk);
+};
+
+click5days.addEventListener('click', fiveDaysClickFunk);
 
 function getFetch() {
-    api.getWeather({latitude: 50.4333, longitude: 30.5167})
-    .then((data) => {
-        renderSecPart(data)
+  api
+    .getWeather(JSON.parse(localStorage.getItem('currentPos')))
+    .then(data => {
+      console.log(data);
+      renderSecPart(data);
     })
     .catch(error => {
-        console.log(error);
-    })
+      console.log(error);
+    });
 }
-getFetch()
+getFetch();
 
 let interval;
 function clock() {
-    let time;
-    interval = setInterval(() => {
-        document.querySelector('.secondPartBox-dateBox-time').innerHTML = time= new Date().toLocaleTimeString()
-    }, 1000);
+  let time;
+  interval = setInterval(() => {
+    document.querySelector(
+      '.secondPartBox-dateBox-time',
+    ).innerHTML = time = new Date().toLocaleTimeString();
+  }, 1000);
 }
-clock()
+clock();
 
 function renderSecPart(data) {
-    div.insertAdjacentHTML('beforeend', `<div class="secondPartBox">
-    <h2 class="secondPartBox-date">${data.everyDay[0].day}<sup>th</sup> ${data.everyDay[0].dayOfWeek}</h2>
+  div.insertAdjacentHTML(
+    'afterbegin',
+    `<div class="secondPartBox">
+    <h2 class="secondPartBox-date">${data.everyDay[0].day}<sup>th</sup> ${data.currentDayOfWeek}</h2>
     <div class='secondPartBox-combi'>
     <div class="secondPartBox-dateBox">
     <p class="secondPartBox-dateBox-month">${data.everyDay[0].month}</p>
     <p class="secondPartBox-dateBox-time"></p>
     </div>
     <div class="secondPartBox-sun">
-    <svg class="secondPartBox-sun-icon" width="20" height="20">    
+    <p class="secondPartBox-sun-sunrise"><svg class="secondPartBox-sun-icon" width="20" height="20">    
     <use href="./images/symbol-defs.svg#icon-sunrise"></use>
-    </svg>
-    <p class="secondPartBox-sun-sunrise">${data.currentSunRise}</p>
-    
-    <svg class="secondPartBox-sun-icon" width="20" height="20">
+    </svg>${data.currentSunRise}</p>
+    <p class="secondPartBox-sun-sunset"><svg class="secondPartBox-sun-icon" width="20" height="20">
     <use href="./images/symbol-defs.svg#icon-sunset"></use>
-    </svg>
-    <p class="secondPartBox-sun-sunset">${data.currentSunSet}</p>
+    </svg>${data.currentSunSet}</p>
     </div>
-    </div>`);
-  }
-
-
-
+    </div>`,
+  );
+}
