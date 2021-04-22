@@ -43,11 +43,10 @@ getFetch();
 let interval;
 
 function clock() {
-  let time;
   interval = setInterval(() => {
     document.querySelector(
       '.secondPartBox-dateBox-time',
-    ).innerHTML = time = new Date().toLocaleTimeString();
+    ).innerHTML = new Date().toLocaleTimeString();
   }, 1000);
 }
 clock();
