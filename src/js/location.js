@@ -1,19 +1,18 @@
-import dataObject from './getWeather.js';
 import back from './setBackground.js';
-import liTempl from '../templates/favCountry.hbs'
+import liTempl from '../templates/favCountry.hbs';
+import renderCurr from './renderCurrentWether.js';
+import renderSec from './renderSecondPart.js';
+
+ 
 
 JSON.parse(localStorage.getItem('currentPos')) === null
   ? localStorage.setItem('currentPos', JSON.stringify({ city: 'Kiev' }))
   : '';
 
 function getFetch() {
-  return dataObject
-    .getWeather(JSON.parse(localStorage.getItem('currentPos')))
-    .then(data => {
-      back.setBackground();
-      return data;
-    })
-    .catch(error => alert(error, 'Ah Shit, Here We Go Again'));
+  renderCurr.renderFirstPart();
+  renderSec.getFetch();
+  back.setBackground();
 }
 export default { getFetch };
 
@@ -35,7 +34,7 @@ function addLiTempl() {
     if (getlocalSorArr !== null) {
     setfavArrTolocalStorage = getlocalSorArr.favPos
       document.querySelector('.city_list').insertAdjacentHTML('beforeend', liTempl(getlocalSorArr))
-      
+
       
   }
 
@@ -56,6 +55,7 @@ function getLocationOnStar() {
       document.querySelector('.city_list').insertAdjacentHTML('beforeend',`<li class="list_item">
     <p class="list_item_name">${inputCityName}</p> <button class="close"> <svg class="svg">
             <use href="./images/symbol-defs.svg#icon-close"></use></svg> </button></li>`)
+      
     }
   };
 }
@@ -63,7 +63,8 @@ function getLocationOnStar() {
 
 
 const list = document.querySelector(".city_list")
-list.addEventListener('click',deliteCauntry)
+list.addEventListener('click', deliteCauntry)
+
 function deliteCauntry(e) {
   let dellCountry = []
   let btn = e.target;
@@ -75,8 +76,20 @@ function deliteCauntry(e) {
   }
   if (btn) {
     this.removeChild(btn.parentNode);
-    console.log(btn.parentNode.textContent);
+    dellCountry.push(btn.parentNode.textContent.replace(/\s+/g, ' ').trim())
+    setfavArrTolocalStorage.splice(setfavArrTolocalStorage.indexOf(dellCountry[0]), 1)
+    localStorage.setItem('favPos', JSON.stringify({ favPos: setfavArrTolocalStorage }))
   }
+    
+  if (e.target) {
+    console.log(e.target.textContent, "PPPPPPPP");
+    localStorage.setItem('currentPos', JSON.stringify({ city: e.target.textContent }))
+
+    getFetch();
+
+  }
+
+
 }
 
 
