@@ -74,8 +74,10 @@ function render(data) {
 
 function renderChart() {
   const chartCanvasDiv = document.querySelector('.chart-canvas');
-  const onCanvasWidth = Number.parseInt(window.getComputedStyle(chartCanvasDiv).getPropertyValue('width'));
-  
+  const onCanvasWidth = Number.parseInt(
+    window.getComputedStyle(chartCanvasDiv).getPropertyValue('width'),
+  );
+
   Chart.defaults.font.size = 14;
   Chart.defaults.color = 'rgba(255, 255, 255, 0.5)';
   Chart.defaults.borderColor = 'rgba(255, 255, 255, 0.2)';
@@ -86,13 +88,13 @@ function renderChart() {
       labels: arrDate,
       datasets: [
         {
-          label: onCanvasWidth>= 588 >!822 ? 'AVERAGE: ': '',
+          label: onCanvasWidth >= 588 > !822 ? 'AVERAGE: ' : '',
           backgroundColor: 'rgba(255, 255, 255, 0)',
           borderColor: 'rgba(255, 255, 255, 0)',
           backgroundColor: 'rgba(255, 255, 255, 0)',
         },
         {
-          label:' - Temperature, C°',
+          label: ' - Temperature, C°',
           data: arrdayAvarageTemp,
           backgroundColor: 'rgba(255, 255, 255, 0.2)',
           borderColor: '#ff6b09',
@@ -146,7 +148,7 @@ function renderChart() {
       scales: {
         y: {
           title: {
-            display: onCanvasWidth<588 ? false : true,
+            display: onCanvasWidth < 588 ? false : true,
             text: 'Value of Indicators',
             color: 'rgba(255, 255, 255, 0.5)',
             font: {
@@ -154,9 +156,10 @@ function renderChart() {
               size: 12,
               weight: 400,
             },
-            padding:onCanvasWidth>= 588 >!822 ? {bottom: 70} : {bottom: 30},
+            padding:
+              onCanvasWidth >= 588 > !822 ? { bottom: 70 } : { bottom: 30 },
           },
-          stacked: true,
+          stacked: false,
           beginAtZero: false,
           gridLines: {
             display: true,
@@ -171,10 +174,10 @@ function renderChart() {
           },
         },
       },
-      plugins: {                 
+      plugins: {
         legend: {
           position: 'top',
-          align: onCanvasWidth < 588 >!822 ? 'start': 'center',
+          align: onCanvasWidth < 588 > !822 ? 'start' : 'center',
 
           labels: {
             padding: 15,
@@ -184,7 +187,7 @@ function renderChart() {
         },
         title: {
           display: true,
-          text: onCanvasWidth>= 588 >!822 ?'' : 'AVERAGE:',
+          text: onCanvasWidth >= 588 > !822 ? '' : 'AVERAGE:',
           color: 'rgba(255, 255, 255, 0.5)',
           margin: {
             left: 30,

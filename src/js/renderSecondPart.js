@@ -33,6 +33,7 @@ function getFetch() {
     .then(data => {
       console.log(data);
       renderSecPart(data);
+      clock();
     })
     .catch(error => {
       console.log(error);
@@ -47,9 +48,8 @@ function clock() {
     document.querySelector(
       '.secondPartBox-dateBox-time',
     ).innerHTML = new Date().toLocaleTimeString();
-  }, 1000);
+  }, 500);
 }
-clock();
 
 function renderSecPart(data) {
   div.innerHTML = `<div class="secondPartBox">
