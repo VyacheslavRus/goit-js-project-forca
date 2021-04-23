@@ -11,8 +11,10 @@ function renderFirstPart() {
   ref.weBox.style.flexDirection = 'column-reverse';
   ref.box1.classList.remove('contentBox');
   ref.positionBtn.classList.remove('positionBtn');
-  api.getWeather(JSON.parse(localStorage.getItem('currentPos'))).then(data => {
-    ref.box1.innerHTML = `
+  api
+    .getWeather(JSON.parse(localStorage.getItem('currentPos')))
+    .then(data => {
+      ref.box1.innerHTML = `
             <div class="firstPart">
                 <svg class="firstPart-icon" width="35" height="35">
                      <use href="./images/symbol-defs.svg#${data.currentWeatherIcon}"></use>
@@ -32,7 +34,12 @@ function renderFirstPart() {
                     </div>
                 </div>
             </div>`;
-  });
+    })
+    .catch(error => {
+      alert('Неправильный ввод');
+      localStorage.setItem('currentPos', JSON.stringify({ city: 'Kiev' })); // Тест
+      console.log(error);
+    });
 }
 // renderFirstPart();
 

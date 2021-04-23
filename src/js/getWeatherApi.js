@@ -48,7 +48,10 @@ function apiFiveDaysEveryThreeHours(locationString) {
     `${BASEURL}forecast?${locationString}&appid=${APIKEY}&cnt=${UNITSCOUNT}&units=${UNITS}`,
   )
     .then(responce => responce.json())
-    .catch(error => console.log(error));
+    .catch(error => {
+      localStorage.setItem('currentPos', JSON.stringify({ city: 'Kiev' }));
+      console.log(error);
+    });
 }
 
 function apiEveryDay(lat, lon) {
@@ -56,7 +59,10 @@ function apiEveryDay(lat, lon) {
     `${BASEURL}onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${APIKEY}&units=${UNITS}`,
   )
     .then(responce => responce.json())
-    .catch(error => console.log(error));
+    .catch(error => {
+      localStorage.setItem('currentPos', JSON.stringify({ city: 'Kiev' }));
+      console.log(error);
+    });
 }
 
 function getTimeString(date) {

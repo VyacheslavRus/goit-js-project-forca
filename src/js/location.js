@@ -47,7 +47,7 @@ let setfavArrTolocalStorage = [];
 
 function getLocationOnStar(e) {
   if (setfavArrTolocalStorage.includes(inputCityName)) {
-    alert('Етот город добавлен в избранное!');
+    alert('Этот город добавлен в избранное!');
   } else {
     if (inputCityName === undefined || inputCityName === ' ') {
       alert('Вы ничего не ввели!');

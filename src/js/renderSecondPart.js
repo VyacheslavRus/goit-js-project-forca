@@ -33,13 +33,12 @@ function getFetch() {
     .then(data => {
       console.log(data);
       renderSecPart(data);
-      clock();
     })
     .catch(error => {
+      localStorage.setItem('currentPos', JSON.stringify({ city: 'Kiev' })); // Тест
       console.log(error);
     });
 }
-// getFetch();
 
 let interval;
 
@@ -69,5 +68,7 @@ function renderSecPart(data) {
     </div>
     </div>`;
 }
+
+clock();
 
 export default { getFetch };
