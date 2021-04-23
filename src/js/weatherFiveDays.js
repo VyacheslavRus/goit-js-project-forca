@@ -25,7 +25,7 @@ function render(data) {
   refs.contentBox.innerHTML = dayTemplate(data.everyDay);
   document.querySelector(
     '.contentBox-location',
-  ).textContent = `${data.cityName} ${data.countryName}`;
+  ).textContent = `${data.cityName}, ${data.countryName}`;
   refs.buttonBox.classList.add('positionBtn');
   document.querySelector('.additionalInfo').innerHTML = '';
 
