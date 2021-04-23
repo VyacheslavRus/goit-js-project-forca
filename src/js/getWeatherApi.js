@@ -1,4 +1,4 @@
-const BASEURL = 'http://api.openweathermap.org/data/2.5/';
+const BASEURL = 'https://api.openweathermap.org/data/2.5/';
 const APIKEY = '48bbbb719c2c5b12dc6d3c6ec2e60cd2';
 const UNITSCOUNT = '40';
 const UNITS = 'metric';
