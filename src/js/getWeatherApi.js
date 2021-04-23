@@ -111,8 +111,9 @@ const getWeatherApi = async ({ city, latitude, longitude }) => {
     new Date(everyDayObject.current.sunset * 1000),
   );
 
-  everyDayObject.daily.forEach(el => {
+  everyDayObject.daily.forEach((el, index) => {
     weatherData.everyDay.push({
+      elementIndex: index,
       dayOfWeek: WEEK[new Date(el.dt * 1000).getDay()],
       day: new Date(el.dt * 1000).getDate(),
       month: MONTH[new Date(el.dt * 1000).getMonth()],

@@ -1,10 +1,9 @@
 import api from './getWeather.js';
 
-
 const ref = {
   box1: document.querySelector('#conBox'),
   weBox: document.querySelector('.weatherBox'),
-  positionBtn:document.querySelector('.positionBtn'),
+  positionBtn: document.querySelector('.positionBtn'),
 };
 
 function renderFirstPart() {
@@ -35,6 +34,6 @@ function renderFirstPart() {
             </div>`;
   });
 }
-renderFirstPart();
+// renderFirstPart();
 
 export default { renderFirstPart };

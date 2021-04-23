@@ -2,7 +2,7 @@ import api from './quoteForismaticApi.js';
 function renderQuote() {
   api.fetchQuote().then(quote => {
     const renderQuote = document.querySelector('.additionalInfo');
-    let markup = renderQuote.insertAdjacentHTML(
+    renderQuote.insertAdjacentHTML(
       'beforeend',
       `<div class='quoteBox'> 
         <svg class='quoteIcon'>
@@ -12,9 +12,8 @@ function renderQuote() {
     <p class='quoteAuthor'>${quote.author}</p>
     </div>`,
     );
-    return markup;
   });
 }
-renderQuote();
+// renderQuote();
 
 export default { renderQuote };

@@ -2,8 +2,7 @@ import back from './setBackground.js';
 import liTempl from '../templates/favCountry.hbs';
 import renderCurr from './renderCurrentWether.js';
 import renderSec from './renderSecondPart.js';
-
- 
+import renderQ from './quoteForismatic.js';
 
 JSON.parse(localStorage.getItem('currentPos')) === null
   ? localStorage.setItem('currentPos', JSON.stringify({ city: 'Kiev' }))
@@ -13,8 +12,10 @@ function getFetch() {
   renderCurr.renderFirstPart();
   renderSec.getFetch();
   back.setBackground();
+  setTimeout(() => {
+    renderQ.renderQuote();
+  }, 200);
 }
-export default { getFetch };
 
 const ref = {
   inputForm: document.querySelector('.inputForm'),
@@ -23,59 +24,57 @@ const ref = {
   checkbox: document.querySelector('.star'),
 };
 
-
-
-
-
-let getlocalSorArr = JSON.parse(localStorage.getItem('favPos'))
+let getlocalSorArr = JSON.parse(localStorage.getItem('favPos'));
 
 function addLiTempl() {
+  if (getlocalSorArr !== null) {
+    setfavArrTolocalStorage = getlocalSorArr.favPos;
+    document
+      .querySelector('.city_list')
+      .insertAdjacentHTML('beforeend', liTempl(getlocalSorArr));
+  }
 
-    if (getlocalSorArr !== null) {
-    setfavArrTolocalStorage = getlocalSorArr.favPos
-      document.querySelector('.city_list').insertAdjacentHTML('beforeend', liTempl(getlocalSorArr))  
-  }
-   
   if (setfavArrTolocalStorage.length === 0) {
-    document.querySelector('.favBtn').style.display = 'none'
+    document.querySelector('.favBtn').style.display = 'none';
   } else {
-    document.querySelector('.favBtn').style.display = 'block'
+    document.querySelector('.favBtn').style.display = 'block';
   }
+  getFetch();
 }
 
-let inputCityName
+let inputCityName;
 let setfavArrTolocalStorage = [];
 
 function getLocationOnStar(e) {
-  if (setfavArrTolocalStorage.includes(inputCityName)){
-    alert('Етот город добавлен в избранное!')
-  } else { 
-    if (inputCityName === undefined ||inputCityName === " " ) {
-      alert('Вы ничего не ввели!')
+  if (setfavArrTolocalStorage.includes(inputCityName)) {
+    alert('Етот город добавлен в избранное!');
+  } else {
+    if (inputCityName === undefined || inputCityName === ' ') {
+      alert('Вы ничего не ввели!');
     } else {
-      setfavArrTolocalStorage.push(inputCityName)
-      localStorage.setItem('favPos', JSON.stringify({ favPos: setfavArrTolocalStorage }))
-      document.querySelector('.city_list').insertAdjacentHTML('beforeend',`<li class="list_item">
+      setfavArrTolocalStorage.push(inputCityName);
+      localStorage.setItem(
+        'favPos',
+        JSON.stringify({ favPos: setfavArrTolocalStorage }),
+      );
+      document.querySelector('.city_list').insertAdjacentHTML(
+        'beforeend',
+        `<li class="list_item">
     <p class="list_item_name">${inputCityName}</p> <button class="close"> <svg class="svg">
-            <use href="./images/symbol-defs.svg#icon-close"></use></svg> </button></li>`)
-      document.querySelector('.favBtn').style.display = 'block'
+            <use href="./images/symbol-defs.svg#icon-close"></use></svg> </button></li>`,
+      );
+      document.querySelector('.favBtn').style.display = 'block';
     }
-    
-  };
- 
+  }
 }
 
-
-
-
-
-const list = document.querySelector(".city_list")
-list.addEventListener('click', deliteCauntry)
+const list = document.querySelector('.city_list');
+list.addEventListener('click', deliteCauntry);
 
 function deliteCauntry(e) {
-  let dellCountry = []
+  let dellCountry = [];
   let btn = e.target;
-  while (btn && (btn.tagName != "BUTTON")) {
+  while (btn && btn.tagName != 'BUTTON') {
     btn = btn.parentNode;
     if (btn === this) {
       btn = null;
@@ -83,32 +82,41 @@ function deliteCauntry(e) {
   }
   if (btn) {
     this.removeChild(btn.parentNode);
-    dellCountry.push(btn.parentNode.textContent.replace(/\s+/g, ' ').trim())
-    setfavArrTolocalStorage.splice(setfavArrTolocalStorage.indexOf(dellCountry[0]), 1)
-    localStorage.setItem('favPos', JSON.stringify({ favPos: setfavArrTolocalStorage }))
-    if (setfavArrTolocalStorage.length===0) {
- document.querySelector('.favBtn').style.display = 'none'
-}
-  }   
+    dellCountry.push(btn.parentNode.textContent.replace(/\s+/g, ' ').trim());
+    setfavArrTolocalStorage.splice(
+      setfavArrTolocalStorage.indexOf(dellCountry[0]),
+      1,
+    );
+    localStorage.setItem(
+      'favPos',
+      JSON.stringify({ favPos: setfavArrTolocalStorage }),
+    );
+    if (setfavArrTolocalStorage.length === 0) {
+      document.querySelector('.favBtn').style.display = 'none';
+    }
+  }
   if (e.target) {
-    localStorage.setItem('currentPos', JSON.stringify({ city: e.target.textContent }))
+    localStorage.setItem(
+      'currentPos',
+      JSON.stringify({ city: e.target.textContent }),
+    );
     getFetch();
   }
 }
 
-if (setfavArrTolocalStorage.length===0) {
- document.querySelector('.favBtn').style.display = 'none'
+if (setfavArrTolocalStorage.length === 0) {
+  document.querySelector('.favBtn').style.display = 'none';
 }
 if (setfavArrTolocalStorage.includes(inputCityName)) {
-  let checkValue = document.querySelector('.star').checked = true
+  let checkValue = (document.querySelector('.star').checked = true);
   console.log(checkValue);
   console.log(setfavArrTolocalStorage);
-  }
+}
 
 function getLocationOnInput(e) {
-if (setfavArrTolocalStorage.includes(e.currentTarget.value)) {
-  let checkValue = document.querySelector('.star').checked = true
-}
+  if (setfavArrTolocalStorage.includes(e.currentTarget.value)) {
+    let checkValue = (document.querySelector('.star').checked = true);
+  }
   inputCityName = e.currentTarget.value;
   localStorage.setItem('currentPos', JSON.stringify({ city: inputCityName }));
   setTimeout(() => {

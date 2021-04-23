@@ -38,7 +38,7 @@ function getFetch() {
       console.log(error);
     });
 }
-getFetch();
+// getFetch();
 
 let interval;
 
